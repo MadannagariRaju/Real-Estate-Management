@@ -1,0 +1,193 @@
+<div class="show-properties">
+    <div class="dashboard-container">
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Filters Section (Left Sidebar) -->
+        <div class="sidebar">
+          <h3>Filters</h3>
+  
+          <!-- Price Range Filter -->
+          <div class="filter-group">
+            <label for="minPrice">Min Price:</label>
+            <input
+              id="minPrice"
+              type="number"
+              [(ngModel)]="filters.minPrice"
+              placeholder="Min"
+              class="form-control"
+            />
+  
+            <label for="maxPrice">Max Price:</label>
+            <input
+              id="maxPrice"
+              type="number"
+              [(ngModel)]="filters.maxPrice"
+              placeholder="Max"
+              class="form-control"
+            />
+          </div>
+  
+          <!-- Property Type Filter -->
+          <div class="filter-group">
+            <label for="propertyType">Property Type:</label>
+            <select [(ngModel)]="filters.propertyType" >
+              <option value="">All</option>
+              <option value="rent">Rent</option>
+              <option value="sell">Sell</option>
+            </select>
+          </div>
+  
+          <!-- Amenities Filter -->
+          <div class="filter-group">
+            <label for="amenities">Amenities:</label>
+              <input
+                id="amenities"
+                type="text"
+                [(ngModel)]="filters.amenities"
+                placeholder="amenities"
+                class="form-control"
+              />
+          </div>
+  
+          <button class="btn btn-secondary" (click)="applyFilters()">Apply Filters</button>
+        </div>
+
+
+  
+        <!-- Content Area -->
+        <div class="content-area">
+        <!-- Search Bar -->
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-bar"
+            placeholder="Search properties by location, type, or keyword"
+            [(ngModel)]="searchQuery"
+          />
+          <button class="btn search-btn" (click)="searchProperties()">Search</button><br>
+
+          
+        </div>
+            
+          <div *ngIf="properties && properties.length > 0">
+            <div class="property-card" *ngFor="let property of filteredProperties; let i = index">
+              <div class="property-container">
+                <!-- Left Side: Carousel for Media (Image, Video, Floor Plan) -->
+                <div class="property-media">
+                  <div id="carouselExampleCaptions{{ i }}" class="carousel slide">
+                    <div class="carousel-indicators">
+                      <button
+                        type="button"
+                        [attr.data-bs-target]="'#carouselExampleCaptions' + i"
+                        [attr.data-bs-slide-to]="0"
+                        class="active"
+                        aria-current="true"
+                        aria-label="Slide 1"
+                      ></button>
+                      <button
+                        type="button"
+                        [attr.data-bs-target]="'#carouselExampleCaptions' + i"
+                        [attr.data-bs-slide-to]="1"
+                        aria-label="Slide 2"
+                        *ngIf="property.videoUrl"
+                      ></button>
+                      <button
+                        type="button"
+                        [attr.data-bs-target]="'#carouselExampleCaptions' + i"
+                        [attr.data-bs-slide-to]="2"
+                        aria-label="Slide 3"
+                        *ngIf="property.floorPlanUrl"
+                      ></button>
+                    </div>
+  
+                    <div class="carousel-inner">
+                      <!-- Image Slide -->
+                      <div class="carousel-item active">
+                        <img
+                          [src]="property.imageUrl"
+                          class="d-block w-100"
+                          alt="Property Image"
+                          (click)="openImageModal(property.imageUrl,property.id)"
+                        />
+                      </div>
+  
+                      <!-- Video Slide -->
+                      <div class="carousel-item" *ngIf="property.videoUrl">
+                        <video controls class="d-block w-100" id="video">
+                          <source [src]="property.videoUrl" type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+  
+                      <!-- Floor Plan Slide -->
+                      <div class="carousel-item" *ngIf="property.floorPlanUrl">
+                        <img
+                          [src]="property.floorPlanUrl"
+                          class="d-block w-100"
+                          alt="Floor Plan"
+                          (click)="openImageModal(property.floorPlanUrl,property.id)"
+                        />
+                      </div>
+                    </div>
+  
+                    <!-- Carousel Controls -->
+                    <button
+                      class="carousel-control-prev"
+                      type="button"
+                      [attr.data-bs-target]="'#carouselExampleCaptions' + i"
+                      data-bs-slide="prev"
+                      
+                    >
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                      class="carousel-control-next"
+                      type="button"
+                      [attr.data-bs-target]="'#carouselExampleCaptions' + i"
+                      data-bs-slide="next"
+                      
+                    >
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </div>
+  
+                <!-- Right Side: Property Details -->
+                <div class="property-details">
+                  <h2>{{ property.title }}</h2>
+                  <p><strong>Description:</strong> {{ property.description }}</p>
+                  <p><strong>Price:</strong> {{ property.price | currency : 'INR' }}</p>
+                  <p><strong>Location:</strong> {{ property.location }}</p>
+                  <p><strong>Type:</strong> {{ property.propertyType }}</p>
+                  <p><strong>Amenities:</strong> {{ property.amenities }}</p>
+                  <p><strong>Posted by:</strong> {{ property.role === 'owner' ? 'Direct Owner' : 'Agent' }}</p>
+                  
+                  <button class="btn btn-primary contact-btn" (click)="login()">
+                    Contact Now
+                  </button>
+  
+              
+                
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div *ngIf="!filteredProperties || filteredProperties.length === 0">
+            <p>No properties available at the moment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Image View Modal -->
+  <div *ngIf="isImageModalOpen" class="modal-backdrop">
+    <div class="modal-content">
+      <img [src]="currentImageUrl" alt="Full Screen Image" class="modal-image" />
+      <button class="close-btn" (click)="closeImageModal()">&times;</button>
+    </div>
+  </div>
+  

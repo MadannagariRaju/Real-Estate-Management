@@ -1,0 +1,43 @@
+/* Navbar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Navbar spans the full width of the page */
+    height: 60px; /* Adjust height as needed */
+    background-color: #007bff; /* Dark background for the navbar */
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000; /* Ensure the navbar stays above other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .navbar-actions .btn {
+    margin-left: 10px;
+    color: #fff;
+    background-color: #0056b3;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+  }
+  
+  .navbar-actions .btn:hover {
+    background-color: #062e55;
+    transform: scale(1.05);
+  }
+  
+  .navbar-actions .btn-danger {
+    background-color: #0056b3;
+  }
+  

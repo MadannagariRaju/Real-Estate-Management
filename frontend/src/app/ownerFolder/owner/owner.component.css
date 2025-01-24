@@ -1,0 +1,222 @@
+/* Owner Dashboard */
+.owner-dashboard {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Image */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../../assets/ownerimg3.jpg'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  z-index: 1; /* Background image is at the lowest layer */
+}
+
+/* Greeting Text */
+.greeting {
+  font-size: 2.2rem; /* Larger font size for logo */
+  font-weight: 600; /* Bold for the logo */
+  letter-spacing: 2px; /* Improved spacing for logo clarity */
+  color: white;
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  z-index: 2; /* Overlay is above the background image */
+  pointer-events: none; /* Ensures overlay doesn't block interactions */
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  align-self: flex-start; /* Align text at the top */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 1100px;
+  padding: 20px;
+  z-index: 3; /* Dashboard is above the overlay */
+  pointer-events: auto; /* Ensures dashboard content is interactable */
+  /* border: 2px solid red; */
+}
+
+.dashboard-card{
+  margin: 7px 10px;
+}
+
+/* Navbar */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  color: #fff;
+  font-size: 1.2rem;
+  z-index: 4; /* Navbar is above everything else */
+}
+
+.navbar .logo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: #fff;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #f39c12;
+  color: #fff;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+  float: left;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  pointer-events: auto; /* Ensures cards are clickable */
+}
+
+.dashboard-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.dashboard-card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Profile Menu */
+.profile-menu {
+  position: relative;
+  z-index: 5; /* Ensure profile menu is above other elements */
+}
+
+.profile-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 10px;
+  cursor: pointer;
+
+
+}
+/* Profile Button Icon Styling */
+.profile-btn i {
+  font-size: 2rem; /* Increase font size if needed */
+  color: #fff;     /* Set the icon color */
+
+}
+
+
+.profile-btn:hover {
+  color: #f39c12; /* Hover effect for the icon */
+  cursor: pointer;
+}
+
+/* Dropdown Menu */
+.dropdown-content {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 200px;
+  padding: 10px;
+  display: none;
+}
+
+.dropdown-content p {
+  margin: 5px 0;
+  color: #333;
+}
+
+.dropdown-content button {
+  width: 100%;
+  background-color: #f39c12;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+}
+
+.dropdown-content button:hover {
+  background-color: #e67e22;
+}
+
+/* Show dropdown when open */
+.profile-menu .dropdown-content {
+  display: block;
+}
+
+.findangent {
+  display: flex; /* Enables layout control for children */
+  align-items: center; /* Aligns content vertically */
+  margin-left: auto; /* Pushes the element to the left of the profile button */
+  padding: 0 15px; /* Optional spacing */
+  color: #fff; /* Matches the navbar text color */
+  cursor: pointer; /* Indicates interactivity */
+  margin-right: 40px;
+}
+
+.findangent .agent {
+  margin-left: 20px; /* Optional spacing from the logo or other navbar elements */
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 8px 15px;
+  background-color: #2196f3;
+  border-radius: 5px;
+}
+
+.findangent:hover {
+  /* background-color: #42a5f5; */
+  transition: background-color 0.1s ease;
+  cursor: pointer;
+}

@@ -1,0 +1,22 @@
+<div class="home-container">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">RealEstatePro</div>
+    <ul class="nav-links">
+      <li>
+        <a (click)="navigateTo('show-properties')">Browse Properties</a>
+      </li>
+    </ul>
+    <button class="cta-btn" (click)="login()">Join Now</button>
+  </nav>
+
+  <div class="landing-page">
+    <div class="carousel-images" *ngIf="imageLoaded"></div>
+
+    <div class="content">
+      <h1>Find Your Dream Home</h1>
+      <p>Explore the best properties for buying, renting, or selling with RealEstatePro.</p>
+      <button class="join-now-btn" (click)="login()">Join Now</button>
+    </div>
+  </div>
+</div>

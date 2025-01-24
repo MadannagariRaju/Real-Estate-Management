@@ -1,0 +1,16 @@
+<nav class="navbar">
+    <div class="logo" routerLink="/customer-dashboard">RealEstatePro</div>
+    <div class="navbar-actions">
+        <button class="btn btn-primary" (click)="navigateTo('mortgage-calculator')">
+        Mortage-Calculator
+        </button>
+        <button class="btn btn-primary" (click)="navigateTo('contacted')">
+        Contacted
+        </button>
+        <button class="btn btn-primary" (click)="navigateTo('create-profile')">
+        Create Profile
+        </button>
+        <button class="btn btn-danger" (click)="logout()">Logout</button>
+    </div>
+</nav>
+<router-outlet></router-outlet>

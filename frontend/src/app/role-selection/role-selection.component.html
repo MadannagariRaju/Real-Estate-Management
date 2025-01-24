@@ -1,0 +1,9 @@
+<div class="role-selection-container" id="body">
+  <h2>Welcome, {{ name }}</h2><br>
+  <!-- <p>Please select your role:</p> -->
+  <div class="role-buttons">
+    <button class="role-btn owner-btn" (click)="selectRole('owner')">Sign nup as Ower</button>
+    <button class="role-btn agent-btn" (click)="selectRole('agent')">Sign up as Agent</button>
+    <button class="role-btn customer-btn" (click)="selectRole('customer')">Sign up as Customer</button>
+  </div>
+</div>

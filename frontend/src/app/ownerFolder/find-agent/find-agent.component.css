@@ -1,0 +1,349 @@
+/* Fix Navbar at the top */
+app-owner-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff; /* Optional: set the background color of navbar */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  /* padding: 10px 0; Adjust padding as needed */
+  margin-bottom: 10px;
+}
+
+.find-agent-container {
+    display: flex;
+  }
+  
+/* Fixed Sidebar */
+.filter-sidebar {
+  width: 350px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  /* border-right: 1px solid #ccc; */
+  height: 100vh; /* Full page height for the sidebar */
+  position: fixed; /* Fix sidebar to the left */
+  top: 70px; /* Ensure the sidebar starts below the navbar */
+  left: 0;
+  z-index: 500;
+  overflow-y: auto; /* Add scroll in case of overflow */
+}
+  .filter-sidebar h3 {
+    margin-bottom: 15px;
+  }
+  
+  .filter-group {
+    margin-bottom: 15px;
+  }
+  
+  .filter-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .filter-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color:white;
+  }
+  
+  button:hover {
+    background-color: #062e55;
+    color: white;
+  }
+  .agent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .agent h3 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  .contactedAgents {
+    padding: 8px 16px;
+    font-size: 1em;
+    background-color: #007bff; /* Change to your preferred color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 15%;
+  }
+  
+  .contactedAgents:hover {
+    background-color: #0056b3; /* Darker shade for hover */
+  }
+  
+
+  .agent-profiles {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 350px; /* Ensure the content is not hidden behind the sidebar */
+    margin-top: 90px;
+
+  }
+  
+  .profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .agent-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eef2f7;
+  }
+  
+  .agent-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  .agent-card button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 129px;
+    margin-left: 5px;
+    margin-top: 10px;
+  }
+
+  .profile-header {
+    display: flex;
+    justify-content: space-between; /* Places business name on the left and contacted badge on the right */
+    align-items: center; /* Centers items vertically */
+  }
+  
+  .contacted-badge {
+    margin-left: 10px; /* Adds space between the business name and the badge */
+    color: green;
+    font-weight: bold;
+  }
+
+  .agent-card h4.agentName {
+    color: #2c3e50;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .agent-card h5 {
+    color: #555;
+    font-size: 15px;
+    margin: 10px 0;
+    font-weight: normal;
+    line-height: 1.5;
+  }
+  
+  .agent-card strong {
+    color: #34495e;
+    font-weight: 600;
+    margin-right: 8px;
+  }
+  
+  .agent-card button:hover {
+    background-color: #062e55;
+  }
+/* Modal Background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #333;
+}
+
+/* Details Section */
+.details {
+  margin: 20px 0;
+}
+
+.details h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.details h5 {
+  color: #555;
+  margin: 12px 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.details strong {
+  color: #34495e;
+  font-weight: 600;
+  min-width: 120px;
+  display: inline-block;
+}
+
+/* Reviews Section */
+.review-card {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 15px 0;
+  transition: transform 0.2s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-card h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.review-card p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.review-card small {
+  color: #888;
+  font-size: 14px;
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Scrollbar Styling */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+  
+  .details strong {
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  .review-card {
+    padding: 15px;
+  }
+}
+
+
+
+
+
+.mes-btn{
+  margin-top: 15px;
+}
+
+.error {
+  color: #e74c3c;
+  font-weight: bold;
+  padding: 40px;
+  background-color: #efeff5;
+  border-radius: 22px;
+}

@@ -1,0 +1,54 @@
+<div class="agent-dashboard" id="body">
+  <!-- Navbar Section -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <h1>RealEstatePro</h1>
+    </div>
+
+    <div class="navbar-links">
+
+      <a routerLink = "/show-reviews" class="create-business-btn">show Reviews</a>
+
+      <a routerLink="/bussiness-profile" class="create-business-btn">Create Business Profile</a>
+
+
+        <div class="profile-menu">
+          <button class="profile-btn" (click)="toggleDropdown()">
+            <i class="fa fa-user"></i>
+          </button>
+          <div *ngIf="dropdownOpen" class="dropdown-content">
+            <p>Name: {{ name }}</p>
+            <p>Role: {{ role }}</p>
+            <button (click)="logout()">Logout</button>
+          </div>
+        </div>
+    </div>
+  </nav>
+
+  <h1 class="greet">Hi <Strong>{{name}}</Strong></h1>
+  <div class="dashboard-container">
+    <div class="dashboard-content">
+      <div class="dashboard-card" (click)="navigateTo('add-property')">
+        <h2>Add Property</h2>
+        <p>List new properties for rent or sale.</p>
+      </div>
+
+      <div class="dashboard-card" (click)="navigateTo('list-property')">
+        <h2>List Property</h2>
+        <p>View all your listed properties.</p>
+      </div>
+
+      <div class="dashboard-card" (click)="navigateTo('message-customer')">
+        <h2>Messages from Customers</h2>
+        <p>View and respond to customer inquiries.</p>
+      </div>
+
+       <div class="dashboard-card" (click)="navigateTo('message-owner')">
+        <h2>Messages from Owner</h2>
+        <p>View and respond to customer inquiries.</p>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

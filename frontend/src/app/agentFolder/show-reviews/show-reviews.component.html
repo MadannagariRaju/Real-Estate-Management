@@ -1,0 +1,24 @@
+<app-agent-navbar></app-agent-navbar>
+<div class="reviews-container">
+    <h2>Agent Reviews</h2>
+    <div *ngIf="(reviews?.length ?? 0) > 0; else noReviews" class="reviews-list">
+      <div class="review-card" *ngFor="let review of reviews">
+        <div class="review-header">
+          <h3 class="review-name">{{ review.name }}</h3>
+          <span class="review-date">{{ review.sentAt | date: 'medium' }}</span>
+        </div>
+        <p class="review-text">{{ review.reviewDescription }}</p>
+        <div class="review-footer">
+          <p><strong>Email:</strong> {{ review.email }}</p>
+          <!-- <p><strong>Business Name:</strong> {{ review.businessProfile.businessName }}</p>
+          <p><strong>Agent Name:</strong> {{ review.businessProfile.agentName }}</p>
+          <p><strong>Contact:</strong> {{ review.businessProfile.contact }}</p>
+          <p><strong>Location:</strong> {{ review.businessProfile.location }}</p> -->
+        </div>
+      </div>
+    </div>
+    <ng-template #noReviews>
+      <p class="no-reviews">No reviews available yet.</p>
+    </ng-template>
+  </div>
+  

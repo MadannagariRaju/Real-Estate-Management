@@ -1,0 +1,145 @@
+<app-owner-navbar></app-owner-navbar>
+<h2 class="heading">My Properties</h2>
+<div *ngIf="properties && properties.length > 0">
+  <div class="property-card" *ngFor="let property of properties; let i = index">
+    <div class="property-container">
+      <!-- Left Side: Carousel for Media (Image, Video, Floor Plan) -->
+      <div class="property-media">
+        <div id="carouselExampleCaptions{{ i }}" class="carousel slide">
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              [attr.data-bs-target]="'#carouselExampleCaptions' + i"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              [attr.data-bs-target]="'#carouselExampleCaptions' + i"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+              *ngIf="property.videoUrl"
+            ></button>
+            <button
+              type="button"
+              [attr.data-bs-target]="'#carouselExampleCaptions' + i"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+              *ngIf="property.floorPlanUrl"
+            ></button>
+          </div>
+
+          <div class="carousel-inner">
+            <!-- Image Slide -->
+            <div class="carousel-item active">
+              <img
+                [src]="property.imageUrl"
+                class="d-block w-100"
+                alt="Property Image"
+                id="image"
+                (click)="openImageModal(property.imageUrl)"
+              />
+            </div>
+
+            <!-- Video Slide -->
+            <div class="carousel-item" *ngIf="property.videoUrl">
+              <video controls class="d-block w-100" id="video">
+                <source [src]="property.videoUrl" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+            <!-- Floor Plan Slide -->
+            <div class="carousel-item" *ngIf="property.floorPlanUrl">
+              <img
+                [src]="property.floorPlanUrl"
+                class="d-block w-100"
+                id="floorplan"
+                alt="Floor Plan"
+                (click)="openImageModal(property.floorPlanUrl)"
+              />
+            </div>
+          </div>
+
+          <!-- Carousel Controls -->
+          <button
+            class="carousel-control-prev"
+            type="button"
+            [attr.data-bs-target]="'#carouselExampleCaptions' + i"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            [attr.data-bs-target]="'#carouselExampleCaptions' + i"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Side: Property Details -->
+      <div class="property-details">
+        <h2>{{ property.title }}</h2><hr>
+        <p><strong>Description:</strong> {{ property.description }}</p>
+        <p><strong>Price:</strong> {{ property.price | indianCurrencyFormat}}</p>
+        <p><strong>Location:</strong> {{ property.location }}</p>
+        <p><strong>Type:</strong> {{ property.propertyType }}</p>
+        <p><strong>Amenities:</strong> {{ property.amenities }}</p>
+        <p><strong>Role:</strong> {{ property.role }}</p>
+        <button class="delete-btn" (click)="deleteProperty(property.id)">Delete</button>
+        <button class="analytics-btn" (click)="openAnalyticsModal(property)">View Analytics</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!properties || properties.length === 0">
+  <p class="noproperties" >No properties available at the moment.</p>
+</div>
+
+<!-- Modal for Image -->
+<div class="modal-backdrop" *ngIf="isModalOpen" (click)="closeImageModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <img [src]="modalImageUrl" alt="Full-Size Image" class="modal-image" />
+    <button class="close-btn" (click)="closeImageModal()">&#10005;</button>
+  </div>
+</div>
+
+<!-- Modal for Analytics -->
+<div class="analytics-modal-backdrop" *ngIf="isAnalyticsModalOpen" (click)="closeAnalyticsModal()">
+  <div class="analytics-modal-content" (click)="$event.stopPropagation()">
+    <!-- Close Button (X) in Top Right Corner -->
+    <button class="close-btn" (click)="closeAnalyticsModal()">&#10005;</button>
+
+    <!-- Display Property Details -->
+    <div *ngIf="selectedProperty">
+      <h3 class="selectedproperty">Property Details</h3>
+      <hr>
+      <h4><strong>Title:</strong> {{ selectedProperty.title }}</h4>
+      <h4><strong>Description:</strong> {{ selectedProperty.description }}</h4>
+      <h4><strong>Price:</strong> {{ selectedProperty.price | currency : 'INR' }}</h4>
+      <h4><strong>Location:</strong> {{ selectedProperty.location }}</h4>
+      <h4><strong>Type:</strong> {{ selectedProperty.propertyType }}</h4>
+      <h4><strong>Role:</strong> {{ selectedProperty.role }}</h4>
+    </div>
+    <hr>
+
+    <!-- Display Analytics Data -->
+    <div *ngIf="selectedProperty?.analytics">
+      <h3 class="analyticsDetails">Analytics Details</h3>
+      <hr>
+      <!-- <p><strong>Property ID:</strong> {{ selectedProperty.analytics.propertyId }}</p> -->
+      <p><strong>Views Count:</strong> {{ selectedProperty.analytics.viewsCount }}</p>
+      <p><strong>Inquiries Count:</strong> {{ selectedProperty.analytics.inquriesCount }}</p>
+      <p><strong>Conversion Rate:</strong>{{ getConversionRate(selectedProperty.analytics.viewsCount, selectedProperty.analytics.inquriesCount) }}%</p>
+    </div>
+  </div>
+</div>

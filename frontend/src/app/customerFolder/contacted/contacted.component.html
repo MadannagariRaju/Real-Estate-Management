@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<div class="properties-container">
+  <h3 class="properties-title">Contacted Properties</h3>
+  
+  <div class="properties-grid">
+    <div *ngFor="let property of data" class="property-card">
+      <div class="property-details">
+        <div class="property-header">
+          <h5 class="title">
+            <span class="label">Title:</span> {{ property.propertyTitle }}
+          </h5>
+          <span class="property-type">{{ property.propertyType }}</span>
+        </div>
+        
+        <div class="property-info">
+          <h5 class="price">
+            <span class="label">Price:</span> 
+            <span class="amount">₹{{ property.propertyPrice | number }}</span>
+          </h5>
+          <h5 class="contact">
+            <span class="label">Contact:</span> {{ property.propertyContact }}
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

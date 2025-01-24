@@ -1,0 +1,253 @@
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px; /* Increased padding for height */
+  background:linear-gradient(to right, #03131a, #94d3ff); /* Brighter and more energetic gradient */
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More prominent shadow for depth */
+  font-size: 1.2rem; /* Slightly larger font size for better visibility */
+  /* border-radius: 8px; Rounded corners for the navbar */
+  /* margin: 20px; Space around the navbar */
+}
+
+p{
+  font-size: 1.8rem; /* Larger font size for logo */
+  font-weight: 600; /* Bold for the logo */
+  letter-spacing: 2px; /* Improved spacing for logo clarity */
+  text-transform: uppercase; 
+}
+
+.logo {
+  font-size: 2.2rem; /* Larger font size for logo */
+  font-weight: 600; /* Bold for the logo */
+  letter-spacing: 2px; /* Improved spacing for logo clarity */
+  /* text-transform: uppercase; Make logo letters uppercase */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px; /* More spacing between links */
+  font-size: 1.2rem; /* Slightly larger font for links */
+  font-weight: 500; /* Add some weight to the links */
+}
+
+.nav-links li p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 400; /* Normal weight for the name */
+}
+
+.logout-btn {
+  background: #fff;
+  color:white;
+  border: none;
+  border-radius: 20px; /* More rounded button */
+  padding: 12px 30px; /* Increased padding for better size */
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slight shadow for button */
+}
+
+.logout-btn:hover {
+  background: white;
+  color: #fff;
+  transform: scale(1.05); /* Slightly subtle hover effect */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+.logo-link {
+  text-decoration: none;
+  color: white; /* Or any color that matches your theme */
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo-link:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: white; /* Add hover effect if desired */
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between the button and the name */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+  }
+
+  .nav-links {
+      flex-direction: column;
+      gap: 15px;
+  }
+
+  .logout-btn {
+      padding: 10px 20px;
+      font-size: 1rem;
+  }
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #333;
+  color: white;
+}
+
+.logo-link {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Profile Button */
+.profile-btn {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.profile-btn i {
+  margin-right: 8px;
+  font-size: 1.5rem; /* Adjust icon size */
+}
+
+.profile-btn span {
+  font-size: 1rem;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  color: #333;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: none; /* Hidden by default */
+}
+
+/* Show Dropdown on Toggle */
+.right-section .dropdown-menu {
+  display: block;
+}
+
+/* Logout Button */
+.logout-btn {
+  background: #fff;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #f39c12;
+  color: #fff;
+}
+
+
+/* Profile Menu */
+.profile-menu {
+  position: relative;
+  z-index: 5; /* Ensure profile menu is above other elements */
+}
+
+.profile-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 10px;
+  cursor: pointer;
+
+
+}
+/* Profile Button Icon Styling */
+.profile-btn i {
+  font-size: 2rem; /* Increase font size if needed */
+  color: #fff;     /* Set the icon color */
+
+}
+
+
+.profile-btn:hover {
+  color: #f39c12; /* Hover effect for the icon */
+  cursor: pointer;
+}
+
+/* Dropdown Menu */
+.dropdown-content {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 200px;
+  padding: 10px;
+  display: none;
+}
+
+.dropdown-content p {
+  margin: 5px 0;
+  color: #333;
+  font-size: smaller;
+
+}
+
+.dropdown-content button {
+  width: 100%;
+  background-color: #f39c12;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+}
+
+.dropdown-content button:hover {
+  background-color: #e67e22;
+}
+
+/* Show dropdown when open */
+.profile-menu .dropdown-content {
+  display: block;
+}
+.btn{
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 11px;
+}

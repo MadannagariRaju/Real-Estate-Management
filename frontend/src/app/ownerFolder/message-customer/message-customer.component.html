@@ -1,0 +1,44 @@
+<app-owner-navbar></app-owner-navbar>
+
+<div class="message-container">
+  <h1>Messages from Customers</h1>
+  
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Messages List -->
+  <div *ngIf="messages.length > 0" class="messages-list">
+    <div *ngFor="let message of messages" class="message-card">
+      <div class="message-header">
+        <!-- Sent Date -->
+        <p class="sent-at">Sent At: {{ message.sentAt | date: 'medium' }}</p>
+      </div>
+
+      <div class="message-content">
+        <!-- Message Content -->
+        <p><strong>Message:</strong> {{ message.messageContent }}</p>
+      </div>
+
+      <!-- Property Details -->
+      <div class="property-details">
+        <h3>Property Details</h3>
+        <p><strong>Title:</strong> {{ message.propertyTitle }}</p>
+        <p><strong>Description:</strong> {{ message.propertyDescription }}</p>
+        <p><strong>Type:</strong> {{ message.propertyType }}</p>
+      </div>
+
+      <!-- User Profile -->
+      <div *ngIf="message.userProfile" class="user-profile">
+        <h3>Customer Details</h3>
+        <p><strong>Full Name:</strong> {{ message.userProfile.name }}</p>
+        <p><strong>Email:</strong> {{ message.userProfile.email }}</p>
+        <p><strong>Phone:</strong> {{ message.userProfile.phone }}</p>
+        <p><strong>Address:</strong> {{ message.userProfile.address }}</p>
+      </div>
+
+      <button (click)="deleteMessage(message.messageId)" class="delete-btn">Delete</button>
+    </div>
+  </div>
+</div>

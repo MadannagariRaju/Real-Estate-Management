@@ -1,0 +1,195 @@
+/* Modern Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(to bottom right, #f0f2f5, #ffffff);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  app-navbar {
+    width: 100%;
+  }
+  
+  .calculator-container {
+    margin-top: 10%; /* Centers the container vertically and horizontally */
+    margin-left: 30%;
+    max-width: 600px;
+    width: 100%;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+  
+  body > .calculator-container {
+    margin-top: 2rem; /* Spacing from the navbar */
+    margin-bottom: auto; /* Prevents vertical overflow */
+  }
+  
+  
+  
+  
+  /* Title Styles */
+  h1 {
+    color: #2d3748;
+    font-size: 1.875rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  /* Form Styles */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  form div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4a5568;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+  }
+  
+  input::placeholder {
+    color: #a0aec0;
+  }
+  
+  /* Button Styles */
+  button {
+    background-color: #4299e1;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 1rem;
+  }
+  
+  button:hover {
+    background-color: #3182ce;
+  }
+  
+  button:active {
+    background-color: #2c5282;
+  }
+  
+  /* Results Section */
+  div[class*="results"] {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f7fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  h3 {
+    color: #2d3748;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: #4a5568;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  p:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 640px) {
+    body {
+      padding: 1rem;
+    }
+    
+    .calculator-container {
+      padding: 1.5rem;
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+    }
+    
+    input, button {
+      padding: 0.625rem;
+    }
+  }
+  
+  /* Currency Formatting */
+  .currency {
+    font-weight: 600;
+    color: #2d3748;
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  div[class*="results"] {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  /* Validation Styles */
+  input:invalid {
+    border-color: #fc8181;
+  }
+  
+  input:invalid:focus {
+    box-shadow: 0 0 0 3px rgba(252, 129, 129, 0.15);
+  }
+  
+  /* Loading State */
+  button:disabled {
+    background-color: #a0aec0;
+    cursor: not-allowed;
+  }

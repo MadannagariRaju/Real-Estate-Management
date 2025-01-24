@@ -1,0 +1,76 @@
+.add-property-form {
+  max-width: 800px;
+  height: calc(100vh - 40px); /* Account for margin */
+  margin: 20px auto;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px !important;
+}
+
+.add-property-form::-webkit-scrollbar {
+  width: 8px;
+}
+
+.add-property-form::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.add-property-form::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.form-group {
+  margin-bottom: 16px !important;
+}
+
+.form-control, .form-select {
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.btn-primary {
+  padding: 12px 24px;
+  font-weight: 600;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border: none;
+  transition: transform 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 24px !important;
+  color: #2c3e50;
+}
+
+.card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+}
+
+#map {
+  height: 100%;  /* Ensures map takes up the full height of its parent */
+  width: 100%;   /* Ensures map fills the full width of its parent */
+}

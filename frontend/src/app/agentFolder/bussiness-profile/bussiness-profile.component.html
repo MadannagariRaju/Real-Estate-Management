@@ -1,0 +1,180 @@
+<app-agent-navbar></app-agent-navbar>
+<div class="container mt-3">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4 rounded-3 profile">
+    <a class="navbar-brand ms-3" href="#">Business Profile</a>
+  </nav>
+
+  <div *ngIf="isFirstTimeLogin; else showSavedProfile">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Complete Your Business Profile</h4>
+        <form #profileForm="ngForm">
+          <!-- Basic Information Section -->
+          <fieldset>
+            <legend>Basic Information</legend>
+            <div class="mb-3">
+              <label for="businessName" class="form-label">Business Name</label>
+              <input
+                type="text"
+                id="businessName"
+                class="form-control"
+                [(ngModel)]="agent.businessName"
+                name="businessName"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="agentName" class="form-label">Agent Name</label>
+              <input
+                type="text"
+                id="agentName"
+                class="form-control"
+                [(ngModel)]="agent.agentName"
+                name="agentName"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="businessName" class="form-label">Business Email</label>
+              <input
+                type="text"
+                id="businessName"
+                class="form-control"
+                [(ngModel)]="agent.email"
+                name="businessName"
+                required
+              />
+            </div>
+          </fieldset>
+
+          <!-- Professional Details Section -->
+          <fieldset>
+            <legend>Professional Details</legend>
+            <div class="mb-3">
+              <label for="licenseNumber" class="form-label">License Number</label>
+              <input
+                type="text"
+                id="licenseNumber"
+                class="form-control"
+                [(ngModel)]="agent.licenseNumber"
+                name="licenseNumber"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="experience" class="form-label">Experience (in years)</label>
+              <input
+                type="number"
+                id="experience"
+                class="form-control"
+                [(ngModel)]="agent.experience"
+                name="experience"
+                min="0"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="specializations" class="form-label">Specializations</label>
+              <input
+                type="text"
+                id="specializations"
+                class="form-control"
+                [(ngModel)]="agent.specializations"
+                name="specializations"
+                placeholder="Enter specializations separated by commas"
+              />
+            </div>
+          </fieldset>
+
+          <!-- Contact Details Section -->
+          <fieldset>
+            <legend>Contact Details</legend>
+            <div class="mb-3">
+              <label for="contact" class="form-label">Contact</label>
+              <input
+                type="text"
+                id="contact"
+                class="form-control"
+                [(ngModel)]="agent.contact"
+                name="contact"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="location" class="form-label">Location</label>
+              <input
+                type="text"
+                id="location"
+                class="form-control"
+                [(ngModel)]="agent.location"
+                name="location"
+                required
+              />
+            </div>
+          </fieldset>
+
+          <!-- Additional Details Section -->
+          <fieldset>
+            <legend>Additional Details</legend>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea
+                id="description"
+                class="form-control"
+                [(ngModel)]="agent.description"
+                name="description"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="workingHours" class="form-label">Working Hours</label>
+              <input
+                type="text"
+                id="workingHours"
+                class="form-control"
+                [(ngModel)]="agent.workingHours"
+                name="workingHours"
+                placeholder="e.g., Mon-Fri: 9 AM - 6 PM"
+                required
+              />
+            </div>
+          </fieldset>
+
+          <button
+            type="submit"
+            class="btn btn-primary btn-md"
+            (click)="saveAgentProfile()"
+          >
+            Save Profile
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #showSavedProfile>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Your Business Profile</h4>
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Business Name:</strong> {{ agent.businessName }}</li>
+          <li class="list-group-item"><strong>Agent Name:</strong> {{ agent.agentName }}</li>
+          <li class="list-group-item"><strong>License Number:</strong> {{ agent.licenseNumber }}</li>
+          <li class="list-group-item"><strong>Experience:</strong> {{ agent.experience }} years</li>
+          <li class="list-group-item"><strong>Specializations:</strong> {{ agent.specializations }}</li>
+          <li class="list-group-item"><strong>Contact:</strong> {{ agent.contact }}</li>
+          <li class="list-group-item"><strong>Location:</strong> {{ agent.location }}</li>
+          <li class="list-group-item"><strong>Description:</strong> {{ agent.description }}</li>
+          <li class="list-group-item"><strong>Working Hours:</strong> {{ agent.workingHours }}</li>
+        </ul>
+        <button
+          class="btn btn-warning mt-3"
+          (click)="isFirstTimeLogin = true"
+        >
+          Edit Profile
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>

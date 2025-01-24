@@ -1,0 +1,271 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Background Image */
+#body {
+  font-family: 'Arial', sans-serif;
+  background: url('../../../assets/ownerimg3.jpg') no-repeat center center;
+  background-size: cover; /* Ensures the background image covers the whole page */
+  color: #fff;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  /* background-color: rgba(0, 0, 0, 0.6); Semi-transparent dark background */
+  color: #fff;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  border: none;
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); */
+}
+
+.navbar-brand h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-links a,
+.navbar-links .dropdown button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar-links .create-business-btn {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 8px 15px;
+  background-color: #2196f3;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-links .create-business-btn:hover {
+  background-color: #42a5f5;
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  font-size: 1.1rem;
+  background: none;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  padding: 10px;
+  min-width: 150px;
+  text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content p,
+.dropdown-content button {
+  color: #fff;
+  margin: 10px 5px;
+  font-size: 1rem;
+}
+
+.logout-btn {
+  background: none;
+  color: #ff6347;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logout-btn:hover {
+  color: #ff4500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .navbar-links a,
+  .navbar-links .dropdown button {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+  }
+
+  .dropdown-content {
+    right: auto;
+    left: 0;
+  }
+}
+
+.dashboard-container {
+  align-self: flex-start; /* Align text at the top */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 120px;
+  margin-left: 50px;
+  max-width: 1100px;
+  padding: 20px;
+  z-index: 3; /* Dashboard is above the overlay */
+  pointer-events: auto; /* Ensures dashboard content is interactable */
+  /* border: 2px solid red; */
+}
+
+.dashboard-card{
+  margin: 7px 10px;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+  float: left;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  pointer-events: auto; /* Ensures cards are clickable */
+}
+
+.dashboard-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.dashboard-card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+button i{
+  font-size: 30px;
+}
+
+.greet{
+  text-align: center;
+}
+
+
+/* Profile Menu */
+.profile-menu {
+  position: relative;
+  z-index: 5; /* Ensure profile menu is above other elements */
+}
+
+.profile-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 10px;
+  cursor: pointer;
+
+
+}
+/* Profile Button Icon Styling */
+.profile-btn i {
+  font-size: 2rem; /* Increase font size if needed */
+  color: #fff;     /* Set the icon color */
+
+}
+
+
+.profile-btn:hover {
+  color: #f39c12; /* Hover effect for the icon */
+  cursor: pointer;
+}
+
+/* Dropdown Menu */
+.dropdown-content {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 200px;
+  padding: 10px;
+  display: none;
+}
+
+.dropdown-content p {
+  margin: 5px 0;
+  color: #333;
+}
+
+.dropdown-content button {
+  width: 100%;
+  background-color: #f39c12;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+}
+
+.dropdown-content button:hover {
+  background-color: #e67e22;
+}
+
+/* Show dropdown when open */
+.profile-menu .dropdown-content {
+  display: block;
+}

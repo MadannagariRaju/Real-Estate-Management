@@ -1,0 +1,160 @@
+<app-owner-navbar></app-owner-navbar>
+<div class="add-property-form card shadow p-4">
+  <h2 class="text-center mb-4">Add New Property</h2>
+  <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <!-- Property Title -->
+    <div class="form-group mb-3">
+      <label for="title" class="form-label">Property Title:</label>
+      <input
+        id="title"
+        [(ngModel)]="form.title"
+        name="title"
+        type="text"
+        class="form-control"
+        placeholder="Enter property title"
+        required
+      />
+    </div>
+
+    <!-- Property Description -->
+    <div class="form-group mb-3">
+      <label for="description" class="form-label">Property Description:</label>
+      <textarea
+        id="description"
+        [(ngModel)]="form.description"
+        name="description"
+        class="form-control"
+        placeholder="Enter property description"
+        rows="3"
+        required
+      ></textarea>
+    </div>
+    <!-- Location Search Bar -->
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input 
+        type="text" 
+        id="location" 
+        class="form-control" 
+        name="location" 
+        [(ngModel)]="form.location"
+        placeholder="Search location" 
+        (ngModelChange)="geocodeAddress()" 
+      />
+    
+      <div *ngIf="locationError" class="text-danger">
+        {{ locationError }}
+      </div>
+    </div>
+
+    <div id="map" style="height: 400px;"></div>
+
+    
+
+
+    
+
+
+    <!-- Property Type -->
+    <div class="form-group mb-3">
+      <label for="type" class="form-label">Property Type:</label>
+      <select
+        id="type"
+        [(ngModel)]="form.propertyType"
+        name="propertyType"
+        class="form-select"
+        required
+      >
+        <option value="">Select Type</option>
+        <option value="sale">For Sale</option>
+        <option value="rent">For Rent</option>
+        <option value="rent/sale">Rent / sale</option>
+
+      </select>
+    </div>
+
+        <!-- Amenities -->
+        <div class="form-group mb-3">
+          <label for="amenities" class="form-label">Amenities:</label>
+          <input
+            id="amenities"
+            [(ngModel)]="form.amenities"
+            name="amenities"
+            type="text"
+            class="form-control"
+            placeholder="Enter property location"
+            required
+          />
+        </div>
+
+    <!-- Price -->
+    <div class="form-group mb-3">
+      <label for="price" class="form-label">Price:</label>
+      <input
+        id="price"
+        [(ngModel)]="form.price"
+        name="price"
+        type="number"
+        class="form-control"
+        placeholder="Enter property price"
+        required
+      />
+    </div>
+
+    <!-- Contact Information -->
+    <div class="form-group mb-3">
+      <label for="contact" class="form-label">Contact Information:</label>
+      <input
+        id="contact"
+        [(ngModel)]="form.contact"
+        name="contact"
+        type="text"
+        class="form-control"
+        placeholder="Enter contact information"
+        required
+      />
+    </div>
+
+    <!-- Image Upload -->
+    <div class="form-group mb-4">
+      <label for="image" class="form-label">Upload Image:</label>
+      <input
+        id="image"
+        type="file"
+        (change)="onImageSelected($event)"
+        accept="image/*"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <!-- Video Upload -->
+    <div class="form-group mb-4">
+      <label for="video" class="form-label">Upload Video:</label>
+      <input
+        id="video"
+        type="file"
+        (change)="onVideoSelected($event)"
+        accept="video/*"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Floor Plan Upload -->
+    <div class="form-group mb-4">
+      <label for="floorPlan" class="form-label">Upload Floor Plan:</label>
+      <input
+        id="floorPlan"
+        type="file"
+        (change)="onFloorPlanSelected($event)"
+        accept="image/*,application/pdf"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary btn-lg w-100">
+      <strong>Add Property</strong>
+    </button>
+  </form>
+</div>

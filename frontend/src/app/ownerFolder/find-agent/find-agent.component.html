@@ -1,0 +1,144 @@
+<app-owner-navbar></app-owner-navbar>
+<div class="find-agent-container">
+  <!-- Sidebar for Filters -->
+  <div class="filter-sidebar">
+    <h3>Filters</h3>
+    <div class="filter-group">
+      <label for="location">Location:</label>
+      <input
+        type="text"
+        id="location"
+        [(ngModel)]="filters.location"
+        placeholder="Enter location"
+      />
+    </div>
+    <div class="filter-group">
+      <label for="experience">Experience (years):</label>
+      <input
+        type="number"
+        id="experience"
+        [(ngModel)]="filters.experience"
+        placeholder="Enter experience"
+      />
+    </div>
+    <div class="filter-group">
+      <label for="specialization">Specialization:</label>
+      <input
+        type="text"
+        id="specialization"
+        [(ngModel)]="filters.specialization"
+        placeholder="Enter specialization"
+      />
+    </div>
+    <button (click)="applyFilters()">Apply Filters</button>
+    <button (click)="resetFilters()">Reset Filters</button>
+  </div>
+
+  <!-- Content Area for Agent Profiles -->
+  <div class="agent-profiles">
+    <div class="agent">
+      <h3 *ngIf="showContactedAgents; else agentProfiles">Agents You Contacted</h3>
+      <ng-template #agentProfiles>
+        <h3>Agent Profiles</h3>
+      </ng-template>
+
+      <button class="contactedAgents" (click)="toggleView()">{{showContactedAgents ? "Agent Profiles" :"Contacted Agents"}}</button>
+    </div>
+    <hr>
+    <div *ngIf="!showContactedAgents">
+      <div *ngIf="filteredProfiles.length === 0" class="no-results">
+        <p class="error">Agents not found</p>
+      </div>
+      <div class="profile-grid">
+        <div class="agent-card" *ngFor="let profile of filteredProfiles">
+          <div class="profile-header">
+            <h4 class="agentName">{{ profile.businessName }}</h4>
+            <div *ngIf="contactedAgentsIds.includes(profile.user.id)" class="contacted-badge">
+              Contacted ☑️
+            </div>
+          </div>
+          <h5><strong>Agent Name:</strong> {{ profile.agentName }}</h5>
+          <h5><strong>Location:</strong> {{ profile.location }}</h5>
+          <h5><strong>Experience:</strong> {{ profile.experience }} years</h5>
+          <h5><strong>Specialization:</strong> {{ profile.specializations }}</h5>
+          <button (click)="viewDetails(profile)">View Details</button>
+          <button (click)="openContactBox(profile)">Contact Now</button>
+          <button (click)="openReviewBox(profile)">Review Agent</button>
+        </div>
+      </div>
+    </div>
+    
+  
+    <!-- Contacted Agents View -->
+    <div *ngIf="showContactedAgents">
+      <!-- <h3>Contacted Agents</h3> -->
+      <div *ngIf="contactedAgents.length === 0">
+        <p>No contacted agents found.</p>
+      </div>
+      <div class="profile-grid">
+        <!-- <h1>contacted agents</h1> -->
+        <div class="agent-card" *ngFor="let agent of contactedAgents">
+          <h4 class="agentName">{{ agent.bussinessName }}</h4>
+          <h5><strong>Agent Name:</strong> {{ agent.agentName }}</h5>
+          <h5><strong>Contact:</strong> {{ agent.contact }}</h5>
+          <h5><strong>Email:</strong> {{ agent.email }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  <!-- Modal for Viewing Profile Details -->
+  <div class="modal" *ngIf="selectedProfile">
+    <div class="modal-content">
+      <span class="close" (click)="closeDetails()">&times;</span>
+      <div class="details">
+        <h2>{{ selectedProfile.businessName }}</h2><hr>
+        <h5><strong>Agent Name:</strong> {{ selectedProfile.agentName }}</h5>
+        <h5><strong>Business Name:</strong> {{ selectedProfile.businessName }}</h5>
+        <h5><strong>Email:</strong> {{ selectedProfile.email }}</h5>
+        <h5><strong>Contact:</strong> {{ selectedProfile.contact }}</h5>
+        <h5><strong>Location:</strong> {{ selectedProfile.location }}</h5>
+        <h5><strong>Experience:</strong> {{ selectedProfile.experience }} years</h5>
+        <h5><strong>Specialization:</strong> {{ selectedProfile.specializations }}</h5>
+        <h5><strong>Description:</strong> {{ selectedProfile.description }}</h5>
+      </div>
+      <hr>
+      <div *ngIf="reviews.length > 0">
+        <h3>Reviews</h3>
+        <div *ngFor="let review of reviews">
+          <div class="review-card">
+            <h4>{{ review.name }}</h4>
+            <p>{{ review.reviewDescription }}</p>
+            <small>Reviewed on: {{ review.sentAt | date }}</small>
+          </div>
+          <hr>
+        </div>
+      </div>
+      <div *ngIf="reviews.length === 0">
+        <p>No reviews available for this agent.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Contacting Agent -->
+  <div class="modal" *ngIf="contactProfile">
+    <div class="modal-content">
+      <span class="close" (click)="closeContactBox()">&times;</span>
+      <h2>Contact {{ contactProfile.agentName }}</h2>
+      <textarea [(ngModel)]="contactMessage" rows="5" placeholder="Type your message here..."></textarea>
+      <button (click)="sendMessage(contactProfile)" class="mes-btn">Send Message</button>
+    </div>
+  </div>
+
+  <!-- Modal for Reviewing Agent -->
+  <div class="modal" *ngIf="reviewProfile">
+    <div class="modal-content">
+      <span class="close" (click)="closeReviewBox()">&times;</span>
+      <h2>Review {{ reviewProfile.agentName }}</h2>
+      <textarea [(ngModel)]="reviewMessage" rows="5" placeholder="Enter your review here..."></textarea>
+      <button (click)="submitReview(reviewProfile)" class="mes-btn">Submit Review</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<app-agent-navbar></app-agent-navbar>
+<div class="container">
+  <h2>Messages from Owners</h2>
+
+  <div *ngIf="messages.length === 0" class="no-messages" style="text-align: center; margin-top: 20px;">
+    <p>No messages available.</p>
+  </div>
+
+  <div *ngIf="messages.length > 0" class="message-list">
+    <div *ngFor="let msg of messages; let i = index" class="message-card">
+      <!-- Sent Date -->
+      <p class="sent-date">{{ msg.message.sentAt | date:'medium' }}</p>
+
+      <!-- Message Details -->
+      <h3 class="message-header">Message</h3>
+      <p><strong>Message from Owner: </strong> {{ msg.message.message }}</p>
+
+      <!-- Owner Details -->
+      <h4 class="owner-details-header">Owner Details</h4>
+      <p><strong>Name: </strong> {{ msg.userDetails?.fullName }}</p>
+      <p><strong>Email:</strong> {{ msg.userDetails?.email }}</p>
+      <p><strong>Address:</strong> {{ msg.userDetails?.address }}</p>
+      <p><strong>Phone:</strong> {{ msg.userDetails?.phno }}</p>
+
+      <!-- Delete Button -->
+      <button class="delete-btn" (click)="deleteMessage(msg.message.id, i)">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,163 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #2a2929;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  position: absolute; /* Overlay the navbar on the image */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent; /* Transparent background */
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: black;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 15px;
+  font-weight: bolder;
+  color:black;
+}
+
+.cta-btn {
+  background-color: #f0a500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-btn:hover {
+  background-color: #ffa733;
+  transform: scale(1.1);
+}
+
+/* Landing Page Styling */
+.landing-page {
+  position: relative;
+}
+
+.carousel-images {
+  width: 100%;
+  height: 100vh; /* Set the height of the image */
+  background: url('../../../assets/ownerimg2.jpg') no-repeat center center; /* Set the background image */
+  background-size: cover; /* Ensure the image covers the entire container */
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: black;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.content p {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  background-color: rgb(252 255 205);
+}
+
+.join-now-btn {
+  background-color: #f0a500;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.join-now-btn:hover {
+  background-color: #ffa733;
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark transparent background for dropdown */
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .cta-btn {
+    display: none;
+  }
+
+  .content h1 {
+    font-size: 2rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+  }
+
+  .join-now-btn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+  }
+}
+
+a{
+  background-color: #f0a500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+a:hover{
+  background-color: #ffa733;
+  transform: scale(1.1);
+  cursor: pointer;
+}

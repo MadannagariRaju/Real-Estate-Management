@@ -1,0 +1,65 @@
+<!-- Owner Dashboard -->
+<div class="owner-dashboard">
+  <!-- Background Image Section -->
+  <router-outlet></router-outlet>
+
+  <router-outlet></router-outlet>
+  <div class="background-image">
+    <nav class="navbar">
+      <div class="logo">RealEstatePro</div>
+      <div class="findangent">
+        <div class="agent" (click)="navigateTo('find-agent')">
+          <h2>Find Agent</h2>
+        </div>
+      </div>
+      <!-- Profile Dropdown -->
+      <div class="profile-menu">
+        <button class="profile-btn" (click)="toggleDropdown()">
+          <i class="fa fa-user"></i> <!-- Icon for profile -->
+        </button>
+        <div *ngIf="dropdownOpen" class="dropdown-content">
+          <p>Name: {{ name }}</p>
+          <p>Role: {{ role }}</p>
+          <button (click)="logout()">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="overlay">
+      <!-- <p class="greeting">Hi, {{name}}!</p> -->
+      <h1 class="greeting">Hi <Strong>{{name}}</Strong></h1>
+
+
+      <!-- Dashboard Content -->
+      <div class="dashboard-container">
+        <div class="dashboard-content">
+          <!-- Add Property Card -->
+          <div class="dashboard-card" (click)="navigateTo('add-property')">
+            <h2>Add Property</h2>
+            <p>List new properties for rent or sale.</p>
+          </div>
+
+          <!-- List Property Card -->
+          <div class="dashboard-card" (click)="navigateTo('list-property')">
+            <h2>List Property</h2>
+            <p>View all your listed properties.</p>
+           
+          </div>
+
+          <!-- Create/Edit Profile Card -->
+          <div class="dashboard-card" (click)="navigateTo('create-profile')">
+            <h2>Create/Edit Profile</h2>
+            <p>Manage your personal and business details.</p>
+          </div>
+
+          <!-- Messages from Customers Card -->
+          <div class="dashboard-card" (click)="navigateTo('message-customer')">
+            <h2>Messages from Customers</h2>
+            <p>View and respond to customer inquiries.</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

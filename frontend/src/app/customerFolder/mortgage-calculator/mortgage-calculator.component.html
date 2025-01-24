@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<div class="calculator-container">
+    <h1>Mortgage Calculator</h1>
+    <form (ngSubmit)="calculateMortgage()">
+      <div>
+        <label for="loanAmount">Loan Amount:</label>
+        <input
+          type="number"
+          id="loanAmount"
+          [(ngModel)]="loanAmount"
+          name="loanAmount"
+          required
+          placeholder="Enter loan amount"
+        />
+      </div>
+  
+      <div>
+        <label for="annualInterestRate">Annual Interest Rate (%):</label>
+        <input
+          type="number"
+          id="annualInterestRate"
+          [(ngModel)]="annualInterestRate"
+          name="annualInterestRate"
+          required
+          placeholder="Enter annual interest rate"
+        />
+      </div>
+  
+      <div>
+        <label for="loanTermYears">Loan Term (Years):</label>
+        <input
+          type="number"
+          id="loanTermYears"
+          [(ngModel)]="loanTermYears"
+          name="loanTermYears"
+          required
+          placeholder="Enter loan term in years"
+        />
+      </div>
+  
+      <button type="submit">Calculate</button>
+    </form>
+  
+    <div *ngIf="monthlyPayment">
+        <div>
+            <h3>Mortgage Calculator Results</h3>
+            <p>Monthly Payment: {{ monthlyPayment | indianCurrencyFormat }}</p>
+            <p>Total Payment: {{ totalPayment | indianCurrencyFormat }}</p>
+            <p>Total Interest: {{ totalInterest | indianCurrencyFormat }}</p>
+          </div>
+          
+    </div>
+  </div>
+  
